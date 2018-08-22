@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-jshare-wechat" version="1.0.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>JShareWechat</name>
+    <js-module name="JShareWechat" src="www/JShareWechat.js">
+        <clobbers target="cordova.plugins.JShareWechat" />
+    </js-module>
+    
+    <preference name="WECHAT_APPID" />
+    <preference name="WECHAT_APPSECRET" />
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="JShareWechat">
+                <param name="android-package" value="com.zgwit.jshare.JShareWechat" />
+            </feature>
+            <preference name="WECHAT_APPID" value="$WECHAT_APPID" />
+            <preference name="WECHAT_APPSECRET" value="$WECHAT_APPSECRET" />
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/JShareWechat.java" target-dir="src/com/zgwit/jshare" />
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="JShareWechat">
+                <param name="ios-package" value="JShareWechat" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/JShareWechat.m" />
+    </platform>
+</plugin>
