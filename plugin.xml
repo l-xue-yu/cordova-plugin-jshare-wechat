@@ -1,12 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-jshare-wechat" version="1.0.0" 
-    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+<plugin id="cordova-plugin-jshare-wechat" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>JShareWechat</name>
     <js-module name="JShareWechat" src="www/JShareWechat.js">
         <clobbers target="cordova.plugins.JShareWechat" />
     </js-module>
-    
+
+    <!--添加jcore依赖-->
+    <dependency id="cordova-plugin-jshare" />
+
     <preference name="WECHAT_APPID" />
     <preference name="WECHAT_APPSECRET" />
 
@@ -19,7 +22,14 @@
             <preference name="WECHAT_APPSECRET" value="$WECHAT_APPSECRET" />
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml" />
-        <source-file src="src/android/JShareWechat.java" target-dir="src/com/zgwit/jshare" />
+
+      <!--微信.wxapi.WXEntryActivity-->
+      <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity
+          android:name=".wxapi.WXEntryActivity"
+          android:exported="true" />
+      </config-file>
+
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
     </platform>
     <platform name="ios">
