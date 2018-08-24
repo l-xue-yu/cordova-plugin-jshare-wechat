@@ -3,10 +3,6 @@
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>JShareWechat</name>
-    <js-module name="JShareWechat" src="www/JShareWechat.js">
-        <clobbers target="cordova.plugins.JShareWechat" />
-    </js-module>
-
     <!--添加jcore依赖-->
     <dependency id="cordova-plugin-jshare" />
 
@@ -14,6 +10,11 @@
     <preference name="WECHAT_APPSECRET" />
 
     <platform name="android">
+         <!-- 添加插件安装钩子 -->
+        <hook type="after_plugin_add" src="scripts/android-install.js" />
+        <hook type="after_plugin_install" src="scripts/android-install.js" />
+        <hook type="before_plugin_rm" src="scripts/android-install.js" />
+        <hook type="before_plugin_uninstall" src="scripts/android-install.js" />
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="JShareWechat">
                 <param name="android-package" value="com.zgwit.jshare.JShareWechat" />
