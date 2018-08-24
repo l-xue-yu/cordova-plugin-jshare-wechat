@@ -1,1 +1,2 @@
-"# cordova-plugin-jshare-wechat" 
+# cordova-plugin-jshare-wechat
+
