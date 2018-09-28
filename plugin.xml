@@ -39,6 +39,5 @@
                 <param name="ios-package" value="JShareWechat" />
             </feature>
         </config-file>
-        <source-file src="src/ios/JShareWechat.m" />
     </platform>
 </plugin>

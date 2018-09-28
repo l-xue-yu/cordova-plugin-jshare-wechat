@@ -39,7 +39,7 @@ module.exports = function (context) {
         return ;
     }
 
-    var targetDir  = path.join(projectRoot, "platforms", "android", "src", packageName.replace(/\./g, path.sep), "wxapi");
+    var targetDir  = path.join(projectRoot, "platforms", "android", "app","src","main","java", packageName.replace(/\./g, path.sep), "wxapi");
         targetFiles = [ "WXEntryActivity.java"];
 
     if (['after_plugin_add', 'after_plugin_install'].indexOf(context.hook) === -1) {
@@ -55,7 +55,7 @@ module.exports = function (context) {
 
         // sync the content
         targetFiles.forEach(function (f) {
-            fs.readFile(path.join(context.opts.plugin.dir, 'app','src', 'android', f), {encoding: 'utf-8'}, function (err, data) {
+            fs.readFile(path.join(context.opts.plugin.dir, 'src', 'android', f), {encoding: 'utf-8'}, function (err, data) {
                 if (err) {
                     throw err;
                 }
